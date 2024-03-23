@@ -2,35 +2,29 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Movie = () => {
-  const [movie, setMovie] = useState({});
-  let { id } = useParams();
-  useEffect(() => {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    const [movie, setMovie] = useState({});
+    let { id } = useParams();
 
-    const requestOptions = {
-      method: "GET",
-      headers: headers,
-    }
+    useEffect(() => {
+        let myMovie = {
+            id: 1,
+            title: "Highlander",
+            release_date: "1986-03-07",
+            runtime: 116,
+            mpaa_rating: "R",
+            description: "Some long description",
+        }
+        setMovie(myMovie);
+    }, [id])
 
-    fetch(`http://localhost:8080/movies/${id}`, requestOptions)
-      .then((response) => response.json())
-      .then((data) => {
-        setMovie(data);
-      })
-      .catch((err) => {
-        console.error('Error:', err);
-      });
-  }, [])
-
-  return(
-    <div>
-      <h2>Movie: {movie.title}</h2>
-      <small><em>{movie.release_date}, {movie.runtime} minutes, Rated {movie.mapp_rating}</em></small>
-      <hr />
-      <p>{movie.description}</p>
-    </div>
-  )
+    return(
+        <div>
+            <h2>Movie: {movie.title}</h2>
+            <small><em>{movie.release_date}, {movie.runtime} minutes, Rated {movie.mpaa_rating}</em></small>
+            <hr />
+            <p>{movie.description}</p>
+        </div>
+    )
 }
 
 export default Movie;

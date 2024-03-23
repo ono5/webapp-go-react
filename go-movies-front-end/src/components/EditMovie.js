@@ -1,11 +1,12 @@
 
 const EditMovie = () => {
-  return(
-    <div>
-      <h2>EditMovie</h2>
-      <hr />
-    </div>
-  )
+
+    return(
+        <div>
+            <h2>Edit Movie</h2>
+            <hr />
+        </div>
+    )
 }
 
 export default EditMovie;
