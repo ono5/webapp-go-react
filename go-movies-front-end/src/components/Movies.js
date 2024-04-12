@@ -46,7 +46,7 @@ const Movies = () => {
                             </td>
                             <td>{m.release_date}</td>
                             <td>{m.mpaa_rating}</td>
-                        </tr>    
+                        </tr>
                     ))}
                 </tbody>
             </table>

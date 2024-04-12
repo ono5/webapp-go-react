@@ -21,6 +21,7 @@ type application struct {
 	JWTIssuer    string
 	JWTAudience  string
 	CookieDomain string
+	APIKey       string
 }
 
 func main() {
@@ -28,12 +29,13 @@ func main() {
 	var app application
 
 	// read from command line arguments
-	flag.StringVar(&app.DSN, "dsn", "host=localhost port=5432 user=postgres password=postgres dbname=postgres sslmode=disable timezone=UTC connect_timeout=5", "Postgres connectoin string")
+	flag.StringVar(&app.DSN, "dsn", "host=localhost port=5432 user=postgres password=postgres dbname=movies sslmode=disable timezone=UTC connect_timeout=5", "Postgres connection string")
 	flag.StringVar(&app.JWTSecret, "jwt-secret", "verysecret", "signing secret")
 	flag.StringVar(&app.JWTIssuer, "jwt-issuer", "example.com", "signing issuer")
 	flag.StringVar(&app.JWTAudience, "jwt-audience", "example.com", "signing audience")
 	flag.StringVar(&app.CookieDomain, "cookie-domain", "localhost", "cookie domain")
 	flag.StringVar(&app.Domain, "domain", "example.com", "domain")
+	flag.StringVar(&app.APIKey, "api-key", "b41447e6319d1cd467306735632ba733", "api key")
 	flag.Parse()
 
 	// connect to the database
